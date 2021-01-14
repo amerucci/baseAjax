@@ -3,8 +3,13 @@ session_start();
 include_once('include/header.php');
 require_once('php/list.php'); ?>
 
+<?php
 
+if (!isset($_SESSION['user'])) {
+   header('location:connexion.php');
+}
 
+?>
 
 
 
@@ -13,37 +18,41 @@ require_once('php/list.php'); ?>
     <section class="container">
     <div class="col-12 my-1" id="mychat">
         <div class="row h-100">
-            <div class="col-4 h-100" id="imagepres">
+            <div class="col-12 col-md-4 h-100 p-3 d-none d-sm-block" id="imagepres">
             <div class="card">
-  <img src="img.jpg" alt="John" style="width:100%">
-  <h1>John Doe</h1>
-  <p class="title">CEO & Founder, Example</p>
+ <p id="userImg"></p>
+  <h1 id="userName"></h1>
+  <p id="userPseudo"></p>
 
-  <p><button>Déconnexion</button></p>
+  <a href='deconnexion.php' class='btn btn-warning'>Déconnexion</a>
 </div>
-            <?php
-
-if (isset($_SESSION['user'])) {
-    echo "Bonjour ".$_SESSION['user']['pseudo']." <a href='deconnexion.php'>Déconnexion</a>";
-} else {
-   header('location:connexion.php');
-}
-
-?>
+      
 
             </div>
-            <div class="col-8 h-100 d-flex flex-wrap align-items-end"> <div class="p-2" id="discussion"></div>
+            <div class="col-12 col-md-8 h-100 d-flex flex-wrap align-items-end"> <div class="p-2" id="discussion">
+                <ul id="list" class="float-left"></ul>
+            </div>
             <div class="col-12 saisie mb-4">
+                <div id="istyping"></div>
             <form method="POST">
                 <div class="input-group">
                  
                     <input type="text" class="form-control" id="texte" placeholder="Entrez votre texte">
                     <div class="input-group-append">
-                        <span class="input-group-text" id="valid" style="cursor:pointer">Envoyer</span>
+                        <span class=" btn btn-primary" id="valid" style="cursor:pointer">Envoyer</span>
                     </div>
+                   
                    
                     
                 </div>
+
+                <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoscroll">
+        <label class="form-check-label" for="autoSizingCheck2">
+          Auto Scroll
+        </label>
+        
+      </div>
                 </form>
              
             </div>

@@ -47,7 +47,8 @@ if(isset($_POST) && !empty($_POST)){
                 $_SESSION['user'] = [
                     'id'    => $user['id'],
                     'email' => $user['email'],
-                    'pseudo'  => $user['pseudo']
+                    'pseudo'  => $user['pseudo'],
+                    'avatar' => $user['avatar']
                 ];
 
                 header('Location: index.php');

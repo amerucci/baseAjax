@@ -9,4 +9,4 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="d-flex align-items-center justify-content-center">
+<body class="d-flex align-items-center justify-content-center flex-wrap">

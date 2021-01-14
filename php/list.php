@@ -18,20 +18,17 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $query =  bdd()->query($sql);
         //$query->debugDumpParams();
         // On récupère les données
-        $messagesssss = $query->fetchAll();
+        $messages = $query->fetchAll();
         
 
         // On encode en JSON
-        $messagesJson = json_encode($messagesssss);
+        $messagesJson = json_encode($messages);
 
         // On envoie
         echo $messagesJson;
-        session_start();
-        $idsession = $_SESSION['user']['pseudo'];
-        
+    
 
-        // On encode en JSON
-        $idsessionJson = json_encode($idsession);
+    
 
 
 
